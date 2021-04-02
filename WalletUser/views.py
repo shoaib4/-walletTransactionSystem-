@@ -4,7 +4,6 @@ from .models import WalletUser
 # from Wallet.models import Wallet
 # Create your views here.
 
-
 def create_user(x):
     user = WalletUser.objects.create(name=x.get('name'))
     # wallet = Wallet.objects.create(amount=0)

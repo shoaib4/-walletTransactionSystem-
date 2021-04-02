@@ -1,6 +1,6 @@
 import uuid as uuid
 from django.db import models
-# from walletApp.WalletUser.models import WalletUser
+from WalletUser.models import WalletUser
 
 
 class Transaction(models.Model):
@@ -13,8 +13,8 @@ class Transaction(models.Model):
     uuid = models.UUIDField(unique=True, default=uuid.uuid4, editable=False, db_index=True)
     status = models.CharField(choices=STATUS_TYPES, default='N', max_length=3)
     created_on = models.DateTimeField(auto_now_add=True, null=False)
-    # user = models.ForeignKey(WalletUser)
+    user = models.ForeignKey(WalletUser,on_delete=models.DO_NOTHING)
     amount = models.FloatField()
 
     def __str__(self):
-        return self.uuid
+        return str(self.uuid)
